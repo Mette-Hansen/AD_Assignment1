@@ -1,6 +1,7 @@
 package sample;
 
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Main {
@@ -41,25 +42,73 @@ public class Main {
                     // Check all relevant exponents  (three numbers + pow of two)
                     // sqrt ensures always positive integers
                     for (int i = 1; i < Math.sqrt(Integer.MAX_VALUE); i++) {
-                        int offSet = (int) (Math.pow(i,2) - (array[firstIndex] + array[secondIndex] + array[threeIndex])); //Variable int indicates the off from the sum of three numbers compared to the pow of two
-                        if (Math.sqrt(Math.pow(offSet,2)) < lowestOffset){
-                            lowestOffset = (int) Math.sqrt(Math.pow(offSet,2));
+                        int offSet = (int) (Math.pow(i, 2) - (array[firstIndex] + array[secondIndex] + array[threeIndex])); //Variable int indicates the off from the sum of three numbers compared to the pow of two
+                        if (Math.sqrt(Math.pow(offSet, 2)) < lowestOffset) {
+                            lowestOffset = (int) Math.sqrt(Math.pow(offSet, 2));
                             temp[0] = array[firstIndex];
                             temp[1] = array[secondIndex];
                             temp[2] = array[threeIndex];
-                            temp[3] = (int) Math.pow(i,2);
+                            temp[3] = (int) Math.pow(i, 2);
                         }
                     }
                 }
             }
             //This algorithm can be optimized, however, the optimization doesn't change the bigOh time complexity.
+            //N * N * N * sqrt(1) = N^3 | sqrt(1) == constant
         }
         return temp;
     }
 
+    //Exercise 6
+    public static int sumDivisibleBy3(int N) {
+        if (N - 3 < 0) { //Basecase
+            return 0;
+        }
+        if (N % 3 == 0) { //If divisible by 3
+            return N + sumDivisibleBy3(N - 3);
+        }
+        //If not divisible by 3
+        return sumDivisibleBy3(N - (N % 3));
+    }
+
+    //Exercise 7
+    public static int[] solutionPair(int z) {
+        int[] output = new int[]{0, 0};
+
+        if (z > 100000) {
+            return output;
+        }
+
+        // sqrt used for the theoretical lowest natural exponent
+        for (int x = 2; x < Math.sqrt(z); x++) {
+            for (int y = 2; y < Math.sqrt(z); y++) {
+                //Checks if x^y is equal to z, and that x is the largest value
+                if (Math.pow(x, y) == z && x > output[0]) {
+                    output[0] = x;
+                    output[1] = y;
+                }
+            }
+        }
+        return output;
+    }
+
+    //Exercise 10
+    public static int logTo(int N) {
+
+    }
+
+    //Exercise 11
+    public static int election() {
+
+    }
+
     public static void main(String[] args) {
-        System.out.println(oddSum(8));
-        System.out.println(additive("82842605"));
-        System.out.println(Arrays.toString(threePow(new int[]{23, 56, 22, 11, 65, 89, 3, 44, 87, 910, 45, 35, 98})));
+        //System.out.println("The sum of odd squares: " + oddSum(8));
+        //System.out.println("The additive is " + additive("82842605"));
+        //System.out.println("The three numbers, and power result " + Arrays.toString(threePow(new int[]{23, 56, 22, 11, 65, 89, 3, 44, 87, 910, 45, 35, 98})));
+        //System.out.println("The divisible sum is " + sumDivisibleBy3(12));
+        //System.out.println("The divisible sum is " + sumDivisibleBy3(14));
+        //System.out.println("The solution pair is: " + Arrays.toString(solutionPair(6561)));
+        //System.out.println("The solution pair is: " + Arrays.toString(solutionPair(3125)));
     }
 }
