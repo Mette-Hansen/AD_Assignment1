@@ -94,12 +94,29 @@ public class Main {
 
     //Exercise 10
     public static int logTo(int N) {
-
+        // Could also be solved as thus:
+        //return (int) (Math.log(N)/Math.log(2));
+        if (N <= 1) {
+            return 0;
+        }
+        return logTo(N / 2) + 1;
     }
 
     //Exercise 11
-    public static int election() {
+    public static int election(int[] array, int participants) {
+        int[] temp = new int[participants];
+        Arrays.fill(temp, 0);
+        for (int i = 0; i < array.length; i++) {
+            temp[array[i] - 1]++;
 
+        }
+        for (int i = 0; i < temp.length; i++) {
+            //System.out.println(temp[i] +">"+array);
+            if (temp[i] >= array.length/2) {
+                return i+1;
+            }
+        }
+        return -1;
     }
 
     public static void main(String[] args) {
@@ -110,5 +127,9 @@ public class Main {
         //System.out.println("The divisible sum is " + sumDivisibleBy3(14));
         //System.out.println("The solution pair is: " + Arrays.toString(solutionPair(6561)));
         //System.out.println("The solution pair is: " + Arrays.toString(solutionPair(3125)));
+        //System.out.println(logTo(32)); //returns 5
+        //System.out.println(logTo(4096)); //returns 12
+        System.out.println(election(new int[]{7, 4, 3, 5, 3, 1, 6, 4, 5, 1, 7, 5}, 7));
+        System.out.println(election(new int[]{7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 5}, 7));
     }
 }
