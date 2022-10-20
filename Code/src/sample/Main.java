@@ -1,14 +1,13 @@
 package sample;
 
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Main {
 
     //Exercise 1
     public static int oddSum(int i) {
-        if (i <= 0) return 0;     //Basecase, if integer is negative, return 0.
+        if (i <= 0) return 0;     //Base case, if integer is negative, return 0.
         if (i % 2 == 0) return oddSum(i - 1); //If integer is even, return odd integer
         return (int) (oddSum(i - 2) + Math.pow(i, 2));
     }
@@ -22,7 +21,7 @@ public class Main {
         int indexTwo = Integer.parseInt(s.substring(1, 2));
         int indexThree = Integer.parseInt(s.substring(2, 3));
         if (indexOne + indexTwo == indexThree) {
-            System.out.println(indexOne + " " + indexTwo + " " + indexThree);
+            System.out.println(indexOne + " plus " + indexTwo + " is equal to " + indexThree);
             return true;
         }
         return additive(s.substring(1)); //Define a new start index
@@ -61,7 +60,7 @@ public class Main {
 
     //Exercise 6
     public static int sumDivisibleBy3(int N) {
-        if (N - 3 < 0) { //Basecase
+        if (N - 3 < 0) { //Base case
             return 0;
         }
         if (N % 3 == 0) { //If divisible by 3
@@ -94,8 +93,6 @@ public class Main {
 
     //Exercise 10
     public static int logTo(int N) {
-        // Could also be solved as thus:
-        //return (int) (Math.log(N)/Math.log(2));
         if (N <= 1) {
             return 0;
         }
@@ -120,16 +117,23 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        //System.out.println("The sum of odd squares: " + oddSum(8));
-        //System.out.println("The additive is " + additive("82842605"));
-        //System.out.println("The three numbers, and power result " + Arrays.toString(threePow(new int[]{23, 56, 22, 11, 65, 89, 3, 44, 87, 910, 45, 35, 98})));
-        //System.out.println("The divisible sum is " + sumDivisibleBy3(12));
-        //System.out.println("The divisible sum is " + sumDivisibleBy3(14));
-        //System.out.println("The solution pair is: " + Arrays.toString(solutionPair(6561)));
-        //System.out.println("The solution pair is: " + Arrays.toString(solutionPair(3125)));
-        //System.out.println(logTo(32)); //returns 5
-        //System.out.println(logTo(4096)); //returns 12
-        System.out.println(election(new int[]{7, 4, 3, 5, 3, 1, 6, 4, 5, 1, 7, 5}, 7));
-        System.out.println(election(new int[]{7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 5}, 7));
+        System.out.println("------------------------- Exercise 1 -------------------------\n");
+        System.out.println("The sum of odd squares, from 1 to 8: " + oddSum(8));
+        System.out.println("\n------------------------- Exercise 3 -------------------------\n");
+        System.out.println("The additive is " + additive("82842605"));
+        System.out.println("\n------------------------- Exercise 4 -------------------------\n");
+        System.out.println("The three numbers, and closest power result: " + Arrays.toString(threePow(new int[]{23, 56, 22, 11, 65, 89, 3, 44, 87, 910, 45, 35, 98})));
+        System.out.println("\n------------------------- Exercise 6 -------------------------\n");
+        System.out.println("Test 1: \t The divisible sum of 12 is " + sumDivisibleBy3(12));
+        System.out.println("Test 2: \t The divisible sum of 14 is " + sumDivisibleBy3(14));
+        System.out.println("\n------------------------- Exercise 7 -------------------------\n");
+        System.out.println("Test 1: \t The solution pair of 6561 is: " + Arrays.toString(solutionPair(6561)));
+        System.out.println("Test 2: \t The solution pair of 3125 is: " + Arrays.toString(solutionPair(3125)));
+        System.out.println("\n------------------------- Exercise 10 ------------------------\n");
+        System.out.println("Test 1: \t The base 2 log of 32 is: " + logTo(32)); //returns 5
+        System.out.println("Test 2: \t The base 2 log of 4096 is: " +logTo(4096)); //returns 12
+        System.out.println("\n------------------------- Exercise 11 ------------------------\n");
+        System.out.println("Test 1: \t Which candidate has the majority? (-1 for none of them) " + election(new int[]{7, 4, 3, 5, 3, 1, 6, 4, 5, 1, 7, 5}, 7));
+        System.out.println("Test 2: \t Which candidate has the majority? (-1 for none of them) " +election(new int[]{7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 5}, 7));
     }
 }
