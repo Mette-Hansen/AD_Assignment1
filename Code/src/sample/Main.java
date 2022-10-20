@@ -103,8 +103,8 @@ public class Main {
     public static int election(int[] array, int participants) {
         int[] temp = new int[participants];
         Arrays.fill(temp, 0);
-        for (int i = 0; i < array.length; i++) {
-            temp[array[i] - 1]++;
+        for (int j : array) {
+            temp[j - 1]++;
 
         }
         for (int i = 0; i < temp.length; i++) {
