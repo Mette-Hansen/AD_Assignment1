@@ -41,13 +41,13 @@ public class Main {
                     // Check all relevant exponents  (three numbers + pow of two)
                     // sqrt ensures always positive integers
                     for (int i = 1; i < Math.sqrt(Integer.MAX_VALUE); i++) {
-                        int offSet = (int) (Math.pow(i, 2) - (array[firstIndex] + array[secondIndex] + array[threeIndex])); //Variable int indicates the off from the sum of three numbers compared to the pow of two
+                        int offSet = (int) (Math.pow(2, i) - (array[firstIndex] + array[secondIndex] + array[threeIndex])); //Variable int indicates the off from the sum of three numbers compared to the pow of two
                         if (Math.sqrt(Math.pow(offSet, 2)) < lowestOffset) {
                             lowestOffset = (int) Math.sqrt(Math.pow(offSet, 2));
                             temp[0] = array[firstIndex];
                             temp[1] = array[secondIndex];
                             temp[2] = array[threeIndex];
-                            temp[3] = (int) Math.pow(i, 2);
+                            temp[3] = (int) Math.pow(2, i);
                         }
                     }
                 }
@@ -79,8 +79,8 @@ public class Main {
         }
 
         // sqrt used for the theoretical lowest natural exponent
-        for (int x = 2; x < Math.sqrt(z); x++) {
-            for (int y = 2; y < Math.sqrt(z); y++) {
+        for (int x = 3; x < Math.log(z)/Math.log(3); x++) {
+            for (int y = 3; y < Math.sqrt(z); y++) {
                 //Checks if x^y is equal to z, and that x is the largest value
                 if (Math.pow(x, y) == z && x > output[0]) {
                     output[0] = x;
@@ -109,31 +109,32 @@ public class Main {
         }
         for (int i = 0; i < temp.length; i++) {
             //System.out.println(temp[i] +">"+array);
-            if (temp[i] >= array.length/2) {
-                return i+1;
+            if (temp[i] >= array.length / 2) {
+                return i + 1;
             }
         }
         return -1;
     }
 
     public static void main(String[] args) {
-        System.out.println("------------------------- Exercise 1 -------------------------\n");
-        System.out.println("The sum of odd squares, from 1 to 8: " + oddSum(8));
-        System.out.println("\n------------------------- Exercise 3 -------------------------\n");
-        System.out.println("The additive is " + additive("82842605"));
-        System.out.println("\n------------------------- Exercise 4 -------------------------\n");
-        System.out.println("The three numbers, and closest power result: " + Arrays.toString(threePow(new int[]{23, 56, 22, 11, 65, 89, 3, 44, 87, 910, 45, 35, 98})));
-        System.out.println("\n------------------------- Exercise 6 -------------------------\n");
-        System.out.println("Test 1: \t The divisible sum of 12 is " + sumDivisibleBy3(12));
-        System.out.println("Test 2: \t The divisible sum of 14 is " + sumDivisibleBy3(14));
-        System.out.println("\n------------------------- Exercise 7 -------------------------\n");
-        System.out.println("Test 1: \t The solution pair of 6561 is: " + Arrays.toString(solutionPair(6561)));
-        System.out.println("Test 2: \t The solution pair of 3125 is: " + Arrays.toString(solutionPair(3125)));
-        System.out.println("\n------------------------- Exercise 10 ------------------------\n");
-        System.out.println("Test 1: \t The base 2 log of 32 is: " + logTo(32)); //returns 5
-        System.out.println("Test 2: \t The base 2 log of 4096 is: " +logTo(4096)); //returns 12
-        System.out.println("\n------------------------- Exercise 11 ------------------------\n");
-        System.out.println("Test 1: \t Which candidate has the majority? (-1 for none of them) " + election(new int[]{7, 4, 3, 5, 3, 1, 6, 4, 5, 1, 7, 5}, 7));
-        System.out.println("Test 2: \t Which candidate has the majority? (-1 for none of them) " +election(new int[]{7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 5}, 7));
+        //System.out.println("------------------------- Exercise 1 -------------------------\n");
+        //System.out.println("The sum of odd squares, from 1 to 8: " + oddSum(8));
+        //System.out.println("\n------------------------- Exercise 3 -------------------------\n");
+        //System.out.println("The additive is " + additive("82842605"));
+        //System.out.println("\n------------------------- Exercise 4 -------------------------\n");
+        //System.out.println("The three numbers, and closest power result: " + Arrays.toString(threePow(new int[]{23, 56, 22, 11, 65, 89, 3, 44, 87, 910, 45, 35, 98})));
+        //System.out.println("\n------------------------- Exercise 6 -------------------------\n");
+        //System.out.println("Test 1: \t The divisible sum of 12 is " + sumDivisibleBy3(12));
+        //System.out.println("Test 2: \t The divisible sum of 14 is " + sumDivisibleBy3(14));
+        //System.out.println("\n------------------------- Exercise 7 -------------------------\n");
+        //System.out.println("Test 1: \t The solution pair of 6561 is: " + Arrays.toString(solutionPair(6561)));
+        //System.out.println("Test 2: \t The solution pair of 3125 is: " + Arrays.toString(solutionPair(3125)));
+        //System.out.println("\n------------------------- Exercise 10 ------------------------\n");
+        //System.out.println("Test 1: \t The base 2 log of 32 is: " + logTo(32)); //returns 5
+        //System.out.println("Test 2: \t The base 2 log of 4096 is: " +logTo(4096)); //returns 12
+        //System.out.println("\n------------------------- Exercise 11 ------------------------\n");
+        //System.out.println("Test 1: \t Which candidate has the majority? (-1 for none of them) " + election(new int[]{7, 4, 3, 5, 3, 1, 6, 4, 5, 1, 7, 5}, 7));
+        //System.out.println("Test 2: \t Which candidate has the majority? (-1 for none of them) " +election(new int[]{7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 5}, 7));
+
     }
 }
